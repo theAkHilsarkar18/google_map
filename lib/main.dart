@@ -35,6 +35,14 @@ class _SpleshscreenState extends State<Spleshscreen> {
       var status = await Permission.location.status;
       if (await status.isDenied) {
         status = await Permission.location.request();
+        if(status.isGranted)
+          {
+            Position position = await Geolocator.getCurrentPosition(
+                desiredAccuracy: LocationAccuracy.high);
+            homecontroller.lat.value = position.latitude;
+            homecontroller.lon.value = position.longitude;
+            Navigator.pushReplacementNamed(context, 'map');
+          }
       } else if (status.isGranted) {
         Position position = await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high);

@@ -78,7 +78,7 @@ class _MapscreenState extends State<Mapscreen> {
             position:
                 LatLng(homecontroller.lat.value, homecontroller.lon.value),
             infoWindow: InfoWindow(title: 'Marker 1'),
-            rotation: 90),
+            ),
         Marker(
           markerId: MarkerId("marker_2"),
           position: LatLng(18.997962200185533, 72.8379758747611),
@@ -263,6 +263,12 @@ class _MapscreenState extends State<Mapscreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    InkWell(onTap: () {
+                      openAppSettings();
+                    },child: Icon(Icons.settings,color: t1 > 6 && t1 < 17 ? Colors.blue : Colors.white, size: 35,)),
+                    SizedBox(
+                      height: 20,
+                    ),
                     InkWell(
                       onTap: () {
                         homecontroller.isClick.value =
